@@ -1,0 +1,114 @@
+import React from 'react'
+import Papa from 'papaparse';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+export default function Dashboard() {
+
+    
+
+function handleFileSelect(event) {
+    const file = event.target.files[0];
+    Papa.parse(file, {
+      header: true,
+      complete: (results) => {
+        const jsonData = JSON.stringify(results.data);
+        localStorage.setItem('StudentData', jsonData);
+        alert('Import successful!');
+      },
+      error: (error) => {
+        console.error(error);
+        alert('Import failed!');
+      }
+    });
+
+    // Display success message
+  toast.success('Import successful!', {
+    position: toast.POSITION.BOTTOM_RIGHT
+  });
+  }
+
+function handleImport() {
+    // TODO: Implement import functionality
+    const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.addEventListener('change', handleFileSelect);
+  fileInput.click();
+  }
+  
+  function handleExport() {
+    // TODO: Implement export functionality
+    const jsonData = localStorage.getItem('StudentData');
+  const blob = new Blob([jsonData], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'student_data.json';
+  a.click();
+  alert('Export successful!');
+
+  // Display success message
+  toast.success('Export successful!', {
+    position: toast.POSITION.BOTTOM_RIGHT
+  });
+  }
+
+    return (
+        <div className="flex h-screen justify-center items-center">
+            <div className="w-auto h-auto">
+                <div className="w-auto flex flex-row justify-between">
+                    <h1 className="w-[123px] h-[42px] text-[28px] text-[#121212] font-Inter font-semibold">Students</h1>
+                    <div className="flex flex-row gap-[10px]">
+                        <button className="w-[164px] h-[44px] pt-2.5 pr-5 pb-2.5 pl-5 rounded-md border border-black font-[16px] font-medium font-Inter" onClick={handleImport}>Import Student</button>
+                        <button className="w-[176px] h-[44px] pt-2.5 pr-5 pb-2.5 pl-5 rounded-md border border-black bg-[#121212]" onClick={handleExport}>
+                            <img alt="" />
+                            <p className="font-[16px] font-medium font-Inter text-[#FFFFFF]">Export as CSV</p>
+                        </button>
+                    </div>
+                </div>
+                <p className="w-[290px] h-[24px] font-Inter font-[16px] text-[#7D8398] font-normal pb-10">List of all the students in the database</p>
+                <table className="table-auto border-collapse border border-[#EEEAF9]">
+                    <thead>
+                        <tr className="bg-[#F4F0FF] text-black font-Inter text-sm font-semibold w-[843px] h-[41px]">
+                            <th className="w-[144.6px]">Name</th>
+                            <th className="w-[144.6px]">Roll No</th>
+                            <th className="w-[144.6px]">Address</th>
+                            <th className="w-[144.6px]">Institute</th>
+                            <th className="w-[144.6px]">Course</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr className="border-b border-[#EEEAF9] w-[843px] h-[92px] text-sm mx-auto">
+                            <td className="  ">Aarav</td>
+                            <td className=" ">1962001</td>
+                            <td className=" "><div className="w-[144.6px] ml-20"><div className="text-left">10/1, Main Street,</div><div className="text-left">Gandhi Nagar,</div><div className="text-left">Bangalore - 560008,</div><div className="text-left">Karnataka</div></div></td>
+                            <td className=" "><div className="w-[144.6px]  pl-10"><div className="text-left">LMN Institute of</div><div className="text-left">Technology</div></div></td>
+                            <td className=" "><div className="w-[144.6px] pl-10"><div className="text-left">Bachelors of</div><div className="text-left">Technology</div></div></td>
+                        </tr>
+                        <tr className="border-b border-[#EEEAF9] w-[843px] h-[109px] text-sm">
+                            <td className="">Dhruv</td>
+                            <td className="">1473502</td>
+                            <td className=" "><div className="w-[144.6px] ml-20"><div className="text-left">Door No. 12-2-417/A,</div><div className="text-left">Bank Colony Road,</div><div className="text-left">Ruknuddin Bagh,</div><div className="text-left">Hyderabad - 500032,</div><div className="text-left">Telangana</div></div></td>
+                            <td className=" "><div className="w-[144.6px] pl-10"><div className="text-left">DEF Management</div><div className="text-left">Institute</div></div></td>
+                            <td className=" "><div className="w-[144.6px] pl-10"><div className="text-left">Masters of Business</div><div className="text-left">Administration</div></div></td>
+                        </tr>
+                        <tr className="border-b border-[#EEEAF9] w-[843px] h-[109px] text-sm">
+                            <td className="">Sahil</td>
+                            <td className="">1762503</td>
+                            <td className=" "><div className="w-[144.6px] ml-20"><div className="text-left">H.No. 8-2-123/456,</div><div className="text-left">Sri Nagar Colony,</div><div className="text-left">Road No. 1, Banjara</div><div className="text-left">Hills, Hyderabad -</div><div className="text-left">500034, Telangana</div></div></td>
+                            <td className=" "><div className="w-[144.6px] pl-10"><div className="text-left">MNO Medical College</div></div></td>
+                            <td className=" "><div className="w-[144.6px] pl-10"><div className="text-left">Bachelor of Unani</div><div className="text-left">Medicine and</div><div className="text-left">Surgery</div></div></td>
+                        </tr>
+                        {/* <tr>
+      <td className="">Row 4, Column 1</td>
+      <td className="">Row 4, Column 2</td>
+      <td className="">Row 4, Column 3</td>
+      <td className="">Row 4, Column 4</td>
+      <td className="">Row 4, Column 5</td>
+    </tr> */}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    )
+}
