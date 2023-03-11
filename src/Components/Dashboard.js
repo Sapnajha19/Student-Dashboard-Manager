@@ -4,8 +4,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Icon from "../Assets/Icon.png";
 export default function Dashboard() {
 
-
-
   function handleFileSelect(event) {
     const file = event.target.files[0];
     Papa.parse(file, {
@@ -22,7 +20,6 @@ export default function Dashboard() {
       }
     });
   }
-
   function handleImport() {
     // Implement import functionality
     const fileInput = document.createElement('input');
@@ -30,7 +27,6 @@ export default function Dashboard() {
     fileInput.addEventListener('change', handleFileSelect);
     fileInput.click();
   }
-
   function handleExport() {
     // Implement export functionality
     const jsonData = localStorage.getItem('StudentData');
@@ -44,19 +40,12 @@ export default function Dashboard() {
       // Display success message
       alert('Export successful!');
     }
-
     else {
       alert('Fist import a csv file to export it successfully')
     }
 
   }
-
-
-  const borderStyle = {
-    "border": "1px solid #EEEAF9",
-    "overflow": "hidden"
-  };
-
+  
   return (
     <div className="flex h-screen justify-center items-center">
       <div className="w-auto h-auto">

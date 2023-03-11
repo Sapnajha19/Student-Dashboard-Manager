@@ -5,7 +5,6 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -14,8 +13,6 @@ export default function Login() {
 
     // Redirect to dashboard page using navigate object
     navigate('/Dashboard');
-
-
   };
   return (
     <div className=" h-screen flex justify-center items-center text-center">
