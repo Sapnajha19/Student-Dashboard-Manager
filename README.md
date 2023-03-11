@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Student-Dashboard-Manager
+This is a React app that allows users to authenticate, access a dashboard panel, and manage student data. The app includes the following features:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* Authentication screen: Users can enter an email and password to access the dashboard panel.
+* Dashboard panel: Users can import and export student data using local storage.
+  * Import feature: Users can import a CSV file containing a list of students and convert it into a JSON structure. The  JSON data is then saved into local storage with a key of "StudentData".
+  * Export feature: Users can download the JSON file containing the student data that is saved in local storage.
 
-## Available Scripts
+## Getting Started
+To use this project, follow these steps:
 
-In the project directory, you can run:
+* Install Node.js and npm if they are not already installed on your computer, Recommended node version>=14.
+* Clone this repository to your local machine.
+* In the project directory, run "npm install" to install the required dependencies.
+* To start the app, run "npm start" in the project directory.
+* Open your browser and navigate to http://localhost:3000 to view the app.
 
-### `npm start`
+### Preview
+If everything goes well, This login page will be shown in the browser:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![UI snapshot for Home/Login page](./src/Assets/LoginPage.png)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+It can take any Email address and password for Authentication.
+It will look like this:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![UI snapshot for Authentication](./src/Assets/Authentication.png)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Click on "Submit" or "Login with Google" to redirect to Dashboard page.
+If everything goes well, you will see this page:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![UI snapshot for Dashboard page](./src/Assets/Dashboard.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+#### How to use
+After reaching Dashboard page, you can import any csv file to json and save it to the localstorage by clicking on the "Import Student" button. Then you can export that converted Json string to you local storage of browser using "Export as CSV" button.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##### Detailed steps
+* Import:
+After clicking "Import Student" button.
+--> It will open your file manager, select any csv file.
+--> It will show an alert indicating successfull import.
+Look at the below snapshot for reference:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![UI snapshot for Successful import](./src/Assets/ImportSuccessfull.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+You can also check if the stringify Json is saved in your local storage by opening the development tools-> Application-> Local storage-> localhost url
+There will be a Studentdata key. It will show something like this:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![UI snapshot for Successful saved Json](./src/Assets/SavedJson.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+* Export:
+-->After successful import, click on the "Export as CSV" button.
+It will show a prompt indicating successfull export and the file will be downloaded:
+Take reference from this snapshot:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![UI snapshot for Successful import](./src/Assets/ExportSuccessfull.png)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+After that it will show the Json file downloading there, open it in any text editor, it will have the stringify Json.
 
-### Making a Progressive Web App
+All Done! Thank you for checking out.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
